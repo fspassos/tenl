@@ -29,7 +29,7 @@ double phase =0.0;
 double Sigma=0;
 double domega=0;
 
-int data = 2000;//alocacao de memoria
+int data = 1000;//alocacao de memoria
 int n = sitiosiniciais;
 
 
@@ -47,8 +47,8 @@ double complex rungefunc (double complex fn,double complex fa,double complex fp,
 {
 	double complex func;
 	double complex scho = -1i;
-	double E,j0=data/2;
-	E=F0+Fw*sin((omega+domega)*t+phase);
+	double E,j0=data/2, freq=omega+domega;
+	E=F0+Fw*sin(freq*t+phase);
 	func = scho*(fa+fp-fn*qui*(modulo(fn))+E*(j-j0)*fn);
 	return func;
 }
@@ -152,8 +152,8 @@ int main()
 
 /*=============LOOP EXTERNO DE VARIACAO DO nlparameter*/
 	do {
-n1=(data/2)-n;
-n2=(data/2)+n;
+n1=0;
+n2=data;
 
 
 
@@ -267,12 +267,6 @@ if(write%100==0){
 
 
 /*================ACRESCIMO DE SITIOS ==================*/
-		if(modulo(f[n1+10])>rk||modulo(f[n2-10])>rk)
-		{
-			n=n+newline;
-			n1=(data/2)-n;
-			n2=(data/2)+n;
-		}
 
 	}while(t<tmax);
 
