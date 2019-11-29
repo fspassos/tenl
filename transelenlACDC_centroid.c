@@ -15,7 +15,7 @@ fspassos@ifal.edu.br
 
 
 /*=========PARAMETROS GLOBAIS=============*/
-#define rk  1e-3 //Parametro Runge-Kutta
+#define rk  1e-4 //Parametro Runge-Kutta
 #define tmax 1000 //Tempo de simulaca
 #define sitiosiniciais 100
 #define dnl 0.5 //variacao do nlparameter
